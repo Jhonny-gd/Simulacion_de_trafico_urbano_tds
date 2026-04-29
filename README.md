@@ -33,12 +33,15 @@ El proyecto permite monitorear y controlar variables de una simulacion urbana:
 |   +-- models/
 |   +-- routes/
 |   +-- services/
+|   +-- requirements.txt
+|   +-- .env.example
 +-- frontend/
 |   +-- src/
 |   |   +-- components/
 |   |   +-- services/
 |   |   +-- views/
 |   +-- package.json
+|   +-- .env.example
 +-- webots_project/
     +-- controllers/
     |   +-- simulation_manager.py
@@ -70,6 +73,12 @@ Desde la carpeta `backend`:
 pip install -r requirements.txt
 ```
 
+Opcionalmente, crear el archivo de entorno local:
+
+```powershell
+copy .env.example .env
+```
+
 ```powershell
 python -m uvicorn main:app --reload
 ```
@@ -96,6 +105,13 @@ Desde la carpeta `frontend`:
 
 ```powershell
 npm install
+copy .env.example .env
+```
+
+El archivo `.env` define la URL del backend:
+
+```text
+VITE_API_BASE_URL=http://127.0.0.1:8000
 ```
 
 ### Ejecutar frontend
@@ -146,6 +162,7 @@ python -m uvicorn main:app --reload
 
 ```powershell
 cd frontend
+copy .env.example .env
 npm run dev
 ```
 

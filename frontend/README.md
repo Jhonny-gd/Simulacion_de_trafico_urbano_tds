@@ -6,6 +6,7 @@ Interfaz web construida con Vue 3, Vuetify, Axios y Vite.
 
 ```powershell
 npm install
+copy .env.example .env
 npm run dev
 ```
 
@@ -25,4 +26,10 @@ npm run build
 
 ```text
 http://127.0.0.1:8000
+```
+
+La URL se configura en `.env` con:
+
+```text
+VITE_API_BASE_URL=http://127.0.0.1:8000
 ```
