@@ -67,6 +67,10 @@ POST /simulation/control/reset
 Desde la carpeta `backend`:
 
 ```powershell
+pip install -r requirements.txt
+```
+
+```powershell
 python -m uvicorn main:app --reload
 ```
 
