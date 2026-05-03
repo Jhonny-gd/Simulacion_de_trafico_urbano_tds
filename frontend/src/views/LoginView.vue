@@ -60,23 +60,42 @@ const password = ref('admin123')
 
 <style scoped>
 .login-view {
+  position: relative;
   min-height: 100vh;
   display: grid;
   place-items: center;
   padding: 24px;
-  background: #05060b;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(111, 80, 255, 0.28), transparent 32%),
+    radial-gradient(circle at 88% 78%, rgba(18, 200, 255, 0.14), transparent 30%),
+    linear-gradient(135deg, rgba(105, 71, 255, 0.08), transparent 46%),
+    #ffffff;
+}
+
+.login-view::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(105, 71, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(105, 71, 255, 0.12) 1px, transparent 1px);
+  background-size: 44px 44px;
 }
 
 .login-card {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.15fr 0.95fr;
   width: min(980px, 100%);
   min-height: 532px;
   overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  border: 1px solid rgba(173, 165, 255, 0.3);
   border-radius: 8px;
-  background: #111018;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+  background: linear-gradient(90deg, #000000 0 54.8%, #1a1041 54.8% 100%);
+  box-shadow: none;
 }
 
 .brand-panel {
@@ -84,7 +103,7 @@ const password = ref('admin123')
   align-items: center;
   justify-content: center;
   padding: 34px;
-  background: #03050a;
+  background: #000000;
 }
 
 .login-logo {
@@ -98,7 +117,7 @@ const password = ref('admin123')
   display: flex;
   align-items: center;
   padding: 58px 84px;
-  background: #121019;
+  background: #1a1041;
 }
 
 .form-content {
@@ -152,7 +171,7 @@ const password = ref('admin123')
 
 .login-button {
   border-radius: 12px;
-  background: linear-gradient(90deg, #5b2cff, #6428ff) !important;
+  background: linear-gradient(90deg, #2f55ff, #6f50ff) !important;
   color: #ffffff !important;
   font-size: 14px;
   font-weight: 800;
@@ -176,6 +195,7 @@ const password = ref('admin123')
 @media (max-width: 860px) {
   .login-card {
     grid-template-columns: 1fr;
+    background: linear-gradient(180deg, #000000 0 48%, #1a1041 48% 100%);
   }
 
   .brand-panel {

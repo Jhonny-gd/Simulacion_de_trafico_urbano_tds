@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 
-from models.simulation import ControlResponse, SimulationConfig, SimulationStatus
+from models.simulation import ControlResponse, SimulationConfig, SimulationMetrics, SimulationStatus
 from services.simulation_service import simulation_service
 
 
@@ -13,8 +13,8 @@ def get_simulation_status() -> SimulationStatus:
 
 
 @router.post("/status", response_model=SimulationStatus, status_code=status.HTTP_200_OK)
-def update_simulation_status(status_config: SimulationConfig) -> SimulationStatus:
-    return simulation_service.update_status(status_config)
+def update_simulation_status(metrics: SimulationMetrics) -> SimulationStatus:
+    return simulation_service.update_status(metrics)
 
 
 @router.get("/config", response_model=SimulationConfig)

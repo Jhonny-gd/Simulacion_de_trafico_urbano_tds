@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer
     :model-value="true"
-    color="#111827"
+    color="#0d0828"
     width="260"
     class="border-e-sm border-opacity-25"
     permanent
@@ -45,6 +45,7 @@ defineEmits(['select-section'])
 
 const items = [
   { title: 'Dashboard', value: 'dashboard', icon: 'mdi-view-dashboard-outline' },
+  { title: 'Control', value: 'control', icon: 'mdi-tune-variant' },
   { title: 'Vehiculos', value: 'vehicles', icon: 'mdi-car-multiple' },
   { title: 'Semaforos', value: 'trafficLights', icon: 'mdi-traffic-light' },
   { title: 'Monitoreo', value: 'monitoring', icon: 'mdi-chart-line' },

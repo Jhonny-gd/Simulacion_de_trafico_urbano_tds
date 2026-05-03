@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="#0f172a" flat height="72" class="border-b-sm border-opacity-25 px-4">
+  <v-app-bar color="#0d0828" flat height="72" class="border-b-sm border-opacity-25 px-4">
     <div>
       <div class="text-h6 font-weight-bold">Simulacion de trafico urbano</div>
       <div class="text-caption muted-text">Backend: {{ apiState }}</div>
