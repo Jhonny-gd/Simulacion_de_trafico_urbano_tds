@@ -41,14 +41,14 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/SmallResidentialTower.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/ModernHouse.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/Carwash.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/bmw/BmwX5.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/Church.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/ComposedHouse.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/lincoln/LincolnMKZ.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/range_rover/RangeRoverSportSVR.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/generic/Truck.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/generic/BusSimple.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/generic/MotorbikeSimple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/bmw/BmwX5.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/generic/Bus.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/generic/Truck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/lincoln/LincolnMKZ.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/toyota/ToyotaPrius.proto"
 
 WorldInfo {
   info [
@@ -124,8 +124,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.037240744328510315 -0.034636287102356465 -0.9987058899283721 4.63861226307332
-  position 78.5572658539642 -437.89974884589503 -31.314268102128633
+  orientation 0.14435491317685756 0.8745652548154178 -0.4629225357566267 0.6849993669095598
+  position -96.27593821018533 -38.2790381989515 100.40004302553123
   near 1
   followSmoothness 0
 }
@@ -161,6 +161,26 @@ DEF GROUND Solid {
   boundingObject USE GROUND_PLANE
   locked TRUE
 }
+ToyotaPrius {
+  translation 68.0431 -41.5807 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(6)"
+}
+Truck {
+  translation -1.2055535167306077 -47.80270513301402 0.5005116263189499
+  rotation -0.0250674220091282 0.5841699971641772 -0.8112441301895635 0.014791534606374675
+  name "vehicle(4)"
+}
+Bus {
+  translation 52.91775406534549 -74.12031280366051 0.09874853821432521
+  rotation -2.1791381112014077e-05 2.179364952208776e-05 0.9999999995250861 1.5706922294815413
+  name "vehicle(2)"
+}
+Bus {
+  translation 47.25849576247661 -11.221500854466022 0.09874853821432565
+  rotation -2.1791381115444808e-05 2.1790611547658328e-05 0.9999999995251524 1.570831636271025
+  name "vehicle(3)"
+}
 HighwayPole {
   translation 0.77 238.19 0
   name "highway pole(2)"
@@ -177,10 +197,9 @@ GenericTrafficLight {
   translation -57.65 214.25 -0.06
   rotation 0 0 1 3.14159
   name "generic traffic light(4)"
-  startGreen FALSE
   greenTime 30
   redTime 30
-  state "red"
+  state "green"
 }
 GenericTrafficLight {
   translation -56.09 236.93 0.03
@@ -194,30 +213,13 @@ GenericTrafficLight {
   translation -29.54 236.53 0.08
   rotation 0 0 -1 -5.307179586466759e-06
   name "generic traffic light(3)"
-  startGreen FALSE
   greenTime 30
   redTime 30
-  state "red"
+  state "green"
 }
 ComposedHouse {
   translation -22.41 142.54 0
   rotation 0 0 1 -1.5707953071795862
-}
-BmwX5 {
-  hidden position_0_0 -7.315312377530657e-07
-  hidden position2_0_0 0.001977371451845145
-  hidden position_0_1 -1.6546930509012469e-06
-  hidden position2_0_1 0.0019725601469320576
-  hidden position_0_2 1.8621317778805304
-  hidden position_0_3 1.6463718797697804
-  hidden rotation_1 3.657655938464705e-07 -0.9999999315679841 0.00036995120398506667 0.0019773715872432986
-  hidden rotation_2 -8.273462343578267e-07 0.9999996481607445 0.0008388549949952279 0.0019725608411299824
-  hidden rotation_3 0 -1 0 1.8621317778805304
-  hidden rotation_4 0 1 0 1.6463718797697802
-  translation 24.263936243282945 -42.26854375073526 0.353113655429292
-  rotation -0.0003503169034394101 -3.776112962100765e-07 0.9999999386389605 3.141293101024112
-  controller "simulation_manager"
-  supervisor TRUE
 }
 Carwash {
   translation 85.21 191.64 0.45
@@ -314,6 +316,11 @@ StripBuilding {
   translation -123.63 27.1 0
   rotation 0 0 1 1.01503e-06
   name "strip building(1)"
+}
+BmwX5 {
+  translation -2.6414191301595533 -52.429999999053855 0.3169215005028583
+  rotation -6.409318170117787e-07 -0.9999999999997947 2.2807293193040354e-10 0.0044939373757473524
+  name "vehicle(1)"
 }
 StripBuilding {
   translation 120.68 -73.32 0
@@ -428,6 +435,11 @@ RoadIntersection {
   ]
   startRoadBorder FALSE
 }
+LincolnMKZ {
+  translation -0.00020413657009799024 37.010222050838074 0.31311858976264173
+  rotation 7.4715849436882616e-06 0.9999890873427106 -0.0046717383989487125 0.0029624616438434317
+  name "vehicle(5)"
+}
 CrossRoadsTrafficLight {
   translation -45.13 45.12 0
   name "cross road traffic light(3)"
@@ -451,26 +463,6 @@ CrossRoadsTrafficLight {
 SpeedLimitSign {
   translation 0 33.58 0
   name "speed limit(5)"
-}
-MotorbikeSimple {
-  translation 63.19416590569042 -47.79071168137357 0.25
-  rotation 0 0 1 0.046063454942030416
-  name "vehicle(5)"
-}
-LincolnMKZ {
-  hidden position_0_0 0.00011335025786670964
-  hidden position2_0_0 0.0010422072113173476
-  hidden position_0_1 -6.0347504216514634e-05
-  hidden position2_0_1 0.0006442760584217741
-  hidden position_0_2 0.0014814779328529617
-  hidden position_0_3 0.003205029202201915
-  hidden rotation_1 -5.634287721280306e-05 -0.9941376087336612 -0.10812220737109589 0.0010483530660488768
-  hidden rotation_2 -3.0042251532898803e-05 0.9956418882211236 0.09325893800027278 0.0006470961755799486
-  hidden rotation_3 0 -1 0 0.001481477932717745
-  hidden rotation_4 0 1 0 0.003205029202159011
-  translation 33.75792987907597 -53.269020837769084 0.44017417381306745
-  rotation -0.05715605226992383 -0.0028804529634357205 0.9983611013454217 1.3405587031150554
-  name "vehicle(1)"
 }
 StraightRoadSegment {
   translation 45 4.5 0.02
@@ -565,50 +557,6 @@ StraightRoadSegment {
   leftBarrier TRUE
   length 30.2
   locked FALSE
-}
-Truck {
-  hidden position_0_0 -0.0002830617485472167
-  hidden position2_0_0 0.001791797485295235
-  hidden position_0_1 7.409572358631649e-07
-  hidden position2_0_1 2.4132095938287814e-07
-  hidden position_0_2 0.0006963443250110283
-  hidden position_0_3 0.002178211438892745
-  hidden position_0_4 -0.07477560494656765
-  hidden rotation_1 0.00013979719695711112 -0.9877505296365863 0.15604124986485765 0.001814018235997998
-  hidden rotation_2 1.1472899849161585e-07 0.30967778689132874 -0.9508415579401627 7.794318694247069e-07
-  hidden rotation_3 0 -1 0 0.0006963443253060972
-  hidden rotation_4 0 1 0 0.002178211438866479
-  hidden rotation_7 0 0 -1 0.07477560494656613
-  hidden position_7_0 -1.60206474158318
-  hidden position_7_1 -1.5830047843009734
-  hidden position_7_2 -1.630143285185035
-  hidden position_7_3 -1.6193125396098567
-  hidden position_7_4 -1.7976128839079757
-  hidden position_7_5 -1.9887742114779512
-  hidden rotation_9 0 1 0 1.60206474158318
-  hidden rotation_10 0 -1 0 1.5830047843009734
-  hidden rotation_11 0 1 0 1.630143285185035
-  hidden rotation_12 0 -1 0 1.6193125396098567
-  hidden rotation_13 0 1 0 1.7976128839079757
-  hidden rotation_14 0 -1 0 1.9887742114779512
-  translation 33.770679740392524 -53.093343335887056 0.7962330416762579
-  rotation -0.06371646156635238 0.01143089838732234 0.9979025739457346 1.3675462478696383
-  name "vehicle(3)"
-}
-RangeRoverSportSVR {
-  hidden position_0_0 0.001205225477212994
-  hidden position2_0_0 0.029564724384988368
-  hidden position_0_1 0.0004070470549964464
-  hidden position2_0_1 0.025741342784658817
-  hidden position_0_2 0.031043499875359464
-  hidden position_0_3 0.031159443385400255
-  hidden rotation_1 -0.0006021126755485729 -0.9991700541491393 -0.04072886386743465 0.02958927830490521
-  hidden rotation_2 0.00020349808814589348 0.9998749915432547 -0.015810119382994044 0.02574456071704993
-  hidden rotation_3 0 -1 0 0.031043499875364675
-  hidden rotation_4 0 0.9999999999999999 0 0.031159443385403107
-  translation 66.21249577183414 -47.65145965620056 0.13282161348680577
-  rotation 0.003352304875544949 -0.043139418274696854 0.9990634377470443 0.04604981769663316
-  name "vehicle(2)"
 }
 RoadIntersection {
   translation -104.999 104.999 0.02
@@ -1048,17 +996,6 @@ StraightRoadSegment {
   length 21.5
   locked FALSE
 }
-BusSimple {
-  translation -18.415326956753287 -56.98037754939363 0.55
-  rotation 0 0 1 -2.363810977160579
-  color 0 0.333333 0
-  name "vehicle(4)"
-}
-BusSimple {
-  translation 56.57735513704703 -37.36120807060605 0.42
-  rotation 0 0 1 -1.7046105781424967
-  name "vehicle(6)"
-}
 StraightRoadSegment {
   translation 44.99 -145.81 0.02
   rotation 0 0 -1 -1.5707953071795862
@@ -1410,10 +1347,9 @@ StraightRoadSegment {
 }
 GenericTrafficLight {
   translation -34.665 55.2732 0
-  startGreen FALSE
   greenTime 30
   redTime 30
-  state "red"
+  state "green"
 }
 CrossRoadsTrafficLight {
   translation 45 -45 0
@@ -2240,11 +2176,6 @@ PedestrianCrossing {
   name "pedestrian crossing(24)"
 }
 PedestrianCrossing {
-  translation 64.04 -45.08 -0.06
-  rotation 0 0 1 1.5708
-  name "pedestrian crossing(5)"
-}
-PedestrianCrossing {
   translation 64.04 -104.96 -0.06
   rotation 0 0 1 1.5708
   name "pedestrian crossing(30)"
@@ -2253,6 +2184,11 @@ PedestrianCrossing {
   translation 26.21 -45.08 -0.06
   rotation 0 0 1 1.5708
   name "pedestrian crossing(6)"
+}
+PedestrianCrossing {
+  translation 64.33 -45.08 -0.06
+  rotation 0 0 1 1.5708
+  name "pedestrian crossing(5)"
 }
 PedestrianCrossing {
   translation 26.21 -104.83 -0.06
@@ -2690,4 +2626,11 @@ StraightRoadSegment {
 }
 ModernHouse {
   translation 0 69.31 0
+}
+Robot {
+  controller "simulation_manager"
+  supervisor TRUE
+}
+MotorbikeSimple {
+  translation 22.34 -48.47 0.25
 }
