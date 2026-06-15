@@ -132,7 +132,7 @@
             density="compact"
             hide-details
           />
-          <v-btn color="#7657ff" variant="flat" prepend-icon="mdi-crosshairs-gps">
+          <v-btn color="#7657ff" variant="flat" prepend-icon="mdi-crosshairs-gps" @click="focusOnMap">
             Ver en mapa
           </v-btn>
         </div>
@@ -210,6 +210,7 @@ function createVehicleConfig(config) {
     cambio_velocidad_individual: config.cambio_velocidad_individual ?? 45,
     senales_vehiculo: normalizeVehicleSignals(config.senales_vehiculo),
     vehiculo_seleccionado: config.vehiculo_seleccionado ?? 'veh_01',
+    map_focus_event_id: Number(config.map_focus_event_id) || 0,
   }
 }
 
@@ -259,6 +260,11 @@ function toggleSignal(signal) {
 }
 
 function apply() {
+  emit('update-config', { ...props.config, ...localConfig })
+}
+
+function focusOnMap() {
+  localConfig.map_focus_event_id = (Number(localConfig.map_focus_event_id) || 0) + 1
   emit('update-config', { ...props.config, ...localConfig })
 }
 

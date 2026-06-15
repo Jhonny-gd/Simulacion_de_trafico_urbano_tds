@@ -1,4 +1,5 @@
 from time import monotonic
+from threading import Lock
 
 from models.simulation import (
     ControlResponse,
@@ -25,6 +26,9 @@ class SimulationService:
         self._config = SimulationConfig()
         self._metrics = SimulationMetrics()
         self._last_webots_update: float | None = None
+        self._last_stream_frame: bytes | None = None
+        self._last_stream_frame_at: float | None = None
+        self._stream_lock = Lock()
         self._control_event_id = 0
         self._reset_event_id = 0
 
@@ -69,6 +73,17 @@ class SimulationService:
         self._metrics = SimulationMetrics(**metrics_data)
         self._last_webots_update = monotonic()
         return self.get_status()
+
+    def update_stream_frame(self, frame: bytes) -> None:
+        if not frame:
+            return
+        with self._stream_lock:
+            self._last_stream_frame = frame
+            self._last_stream_frame_at = monotonic()
+
+    def get_stream_frame(self) -> bytes | None:
+        with self._stream_lock:
+            return self._last_stream_frame
 
     def start(self) -> ControlResponse:
         self._state = SimulationState.RUNNING

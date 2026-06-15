@@ -107,6 +107,7 @@ class SimulationConfig(ApiModel):
     direccion_vehiculo: VehicleDirection = VehicleDirection.STRAIGHT
     cambio_velocidad_individual: float = Field(default=70.0, ge=0.0)
     vehiculo_seleccionado: str = Field(default="veh_01", min_length=1)
+    map_focus_event_id: int = Field(default=0, ge=0)
     velocidad_global: int = Field(default=70, ge=0, le=200)
     velocidad_maxima_coche: int = Field(default=120, ge=0, le=200)
     velocidad_maxima_camion: int = Field(default=90, ge=0, le=200)

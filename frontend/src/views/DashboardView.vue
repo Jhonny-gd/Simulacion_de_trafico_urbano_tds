@@ -233,6 +233,7 @@ import VehicleControlPanel from '../components/simulation/VehicleControlPanel.vu
 import VehicleFunctionsPanel from '../components/simulation/VehicleFunctionsPanel.vue'
 import WebotsStreamPanel from '../components/simulation/WebotsStreamPanel.vue'
 import { simulationService } from '../services/simulationService'
+import { showErrorAlert, showSuccessToast } from '../utils/alerts'
 
 defineEmits(['logout'])
 
@@ -376,9 +377,12 @@ async function updateConfig(nextConfig) {
     Object.assign(config, savedConfig)
     apiOnline.value = true
     errorMessage.value = ''
+    activeSection.value = 'dashboard'
+    showSuccessToast('Cambios aplicados correctamente')
   } catch (error) {
     apiOnline.value = false
     errorMessage.value = 'No se pudo guardar la configuracion en el backend.'
+    showErrorAlert('No se aplicaron los cambios', errorMessage.value)
   }
 }
 

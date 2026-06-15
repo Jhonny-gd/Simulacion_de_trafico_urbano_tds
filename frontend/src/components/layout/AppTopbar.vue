@@ -20,13 +20,14 @@
       <v-btn class="control-button" color="error" prepend-icon="mdi-restart" @click="$emit('reset')">
         Reset
       </v-btn>
-      <v-btn icon="mdi-logout" variant="text" @click="$emit('logout')" />
+      <v-btn icon="mdi-logout" variant="text" @click="requestLogout" />
     </div>
   </v-app-bar>
 </template>
 
 <script setup>
 import { computed } from 'vue'
+import { confirmLogout } from '../../utils/alerts'
 
 const props = defineProps({
   simulationState: {
@@ -39,7 +40,7 @@ const props = defineProps({
   },
 })
 
-defineEmits(['start', 'pause', 'reset', 'logout'])
+const emit = defineEmits(['start', 'pause', 'reset', 'logout'])
 
 const apiState = computed(() => (props.apiOnline ? 'conectado' : 'sin conexion'))
 const stateColor = computed(() => {
@@ -47,4 +48,9 @@ const stateColor = computed(() => {
   if (props.simulationState === 'paused') return 'secondary'
   return 'error'
 })
+
+async function requestLogout() {
+  const result = await confirmLogout()
+  if (result.isConfirmed) emit('logout')
+}
 </script>

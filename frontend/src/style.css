@@ -119,6 +119,22 @@ body {
   min-width: 112px;
 }
 
+.traffic-alert-popup {
+  border: 1px solid rgba(173, 165, 255, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 28px 80px rgba(5, 3, 18, 0.52);
+}
+
+.traffic-alert-confirm,
+.traffic-alert-cancel {
+  border-radius: 10px !important;
+  font-weight: 750;
+}
+
+.traffic-alert-confirm {
+  box-shadow: 0 12px 24px rgba(111, 80, 255, 0.28);
+}
+
 @media (max-width: 1279px) {
   .webots-preview {
     min-height: 300px;

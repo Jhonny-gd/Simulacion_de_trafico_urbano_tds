@@ -32,7 +32,7 @@
           <v-icon icon="mdi-video-input-component" size="52" color="secondary" class="mb-3" />
           <div class="text-h5 font-weight-bold">Vista de simulacion Webots</div>
           <div class="text-body-2 muted-text mt-2">
-            Configura VITE_WEBOTS_STREAM_URL para mostrar el stream en vivo
+            Esperando imagen en vivo desde Webots
           </div>
         </div>
       </div>
@@ -43,7 +43,8 @@
 <script setup>
 import { computed } from 'vue'
 
-const streamUrl = import.meta.env.VITE_WEBOTS_STREAM_URL || ''
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000'
+const streamUrl = import.meta.env.VITE_WEBOTS_STREAM_URL || `${apiBaseUrl}/simulation/stream.mjpg`
 
 const streamKind = computed(() => {
   const url = streamUrl.toLowerCase()
@@ -74,6 +75,8 @@ const streamKind = computed(() => {
   min-height: 420px;
   border: 0;
   object-fit: cover;
+  image-rendering: auto;
+  background: #050312;
 }
 
 .stream-placeholder {

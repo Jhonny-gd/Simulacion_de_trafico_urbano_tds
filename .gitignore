@@ -19,6 +19,7 @@ frontend/dist/
 # Webots generated files
 *.wbproj
 *.wbo
+webots_project/controllers/simulation_manager/dashboard_stream.jpg
 
 # OS / editors
 .DS_Store
